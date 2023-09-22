@@ -35,3 +35,12 @@
 //  If true, print “You lose” & end loop
 
 //  End while loop
+
+
+
+
+
+
+
+
+//butt stuff
