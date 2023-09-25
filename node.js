@@ -1,7 +1,44 @@
 //  Start
- 
+//define constants
+
+// Initial player's score
+const Initial_Score = 0;
+// Score needed to win
+
+// Initial count of lives
+const Initial_Lives = 3;
+// Maximum allowable lives
+const Max_Lives = 3;
+// ID of the game board element
+
+// ID of the start button element
+const Start_Button = "Start-Button";
+// ID of the score display element
+const Score_Display = "Score-Display";
+// ID of the lives display element
+const Lives_Display = "lives-Display";
+
+
+//State Variables
+
+//player's score
+let score;
+// Count of lives
+let lives;
+
+// Cached Elements
+
+
+// Start button element
+const startButton = document.getElementById(Start_Button);
+// Score display element
+const scoreDisplay = document.getElementById(Score_Display);
+// Lives display element
+const livesDisplay = document.getElementById(Lives_Display);
+
 
 //  enter word and store it into a character array.
+const Randomly_Genorated_words = ("dog", "kenjamin", "laptop", )
 
 //  Initiate another array of same length as word, but each character is an “_”.
 
