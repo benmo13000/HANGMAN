@@ -1,6 +1,7 @@
 //  Start
+ 
 
-//  Prompt user to enter word and store it into a character array.
+//  enter word and store it into a character array.
 
 //  Initiate another array of same length as word, but each character is an “_”.
 
@@ -37,10 +38,3 @@
 //  End while loop
 
 
-
-
-
-
-
-
-//butt stuff
