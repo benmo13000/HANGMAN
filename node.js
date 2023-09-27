@@ -38,8 +38,7 @@ const livesDisplay = document.getElementById(Lives_Display);
 
 
 //  enter word and store it into a character array.
-const Randomly_Genorated_words = ("dog", "kenjamin", "laptop", )
-
+const Randomly_Generated_words = ("dog", "kenjamin", "laptop", "JavaScriptIsAPainInTheAss");
 //  Initiate another array of same length as word, but each character is an “_”.
 
 //  Initialize variable “lives” = 6
@@ -73,5 +72,9 @@ const Randomly_Genorated_words = ("dog", "kenjamin", "laptop", )
 //  If true, print “You lose” & end loop
 
 //  End while loop
+
+
+
+
 
 
