@@ -1,44 +1,109 @@
-//  Start
-//define constants
+   //define constants
 
-// Initial player's score
-const Initial_Score = 0;
-// Score needed to win
-
-// Initial count of lives
-const Initial_Lives = 3;
-// Maximum allowable lives
-const Max_Lives = 3;
-// ID of the game board element
-
-// ID of the start button element
-const Start_Button = "Start-Button";
-// ID of the score display element
-const Score_Display = "Score-Display";
-// ID of the lives display element
-const Lives_Display = "lives-Display";
+     const wordList = ["googoogaga"];
+     const maxAttempts = 6;
+     let currentWord = "";
+     let guessedWord = "";
+     let guessedLetters = [];
+     let attemptsLeft = maxAttempts;
+     let wordDivs 
+     let lives = 6;
+    //  , "kenjamin", "laptop", "JavaScriptIsAPainInTheAss"
 
 
-//State Variables
+// restart button element
+// const restartButton = document.getElementById(restart_Button);
 
-//player's score
-let score;
-// Count of lives
-let lives;
-
-// Cached Elements
-
-
-// Start button element
-const startButton = document.getElementById(Start_Button);
 // Score display element
-const scoreDisplay = document.getElementById(Score_Display);
+// const scoreDisplay = document.getElementById(Score_Display);
+
 // Lives display element
-const livesDisplay = document.getElementById(Lives_Display);
+const livesDisplayEl = document.getElementById("lives_display");
+
+//words display
+const wordDisplayEl = document.getElementById("word-display");
+
+//input
+const guessInputEl = document.getElementById("guess-input");
+
+//guess button
+const guessButtonEl = document.getElementById("guess-button");
+
+function updateLivesDisplay(){
+    lives--;
+    livesDisplayEl.textContent = `Lives: ${lives}`;
+    if(lives === 0){
+        handleLoss();
+    }
+}
+
+console.log(wordDisplayEl)
+function initializeGame() {
+renderWord()
+}
+function resetGame(){
+    guessedLetters = [];
+    attemptsLeft = maxAttempts;
+    wordDisplayEl.innerHTML = "";
+    renderWord();
+    guessInputEl.value = "";
+
+}
+const restartButtonEl = document.getElementById("restart-button");
+restartButtonEl.addEventListener("click", resetGame);
+
+initializeGame()
 
 
-//  enter word and store it into a character array.
-const Randomly_Generated_words = ("dog", "kenjamin", "laptop", "JavaScriptIsAPainInTheAss");
+
+function renderWord(){
+    currentWord = wordList[0]
+    for (let i = 0; i< currentWord.length; i++){
+        console.log(i)
+        const divEl = document.createElement("div");
+        divEl.innerText = "_"
+        divEl.classList.add("letter")
+        wordDisplayEl.appendChild(divEl);
+}
+    wordDivs = document.querySelectorAll(".letter")
+}
+
+function handleGuess(){
+  let input = guessInputEl.value
+  let foundIndexes = []
+  if(currentWord.indexOf(input) !== -1){
+  }else{
+    updateLivesDisplay();
+    for (let i=0; i < currentWord.length; i++){
+        if (currentWord[i] === input) {
+            foundIndexes.push(i);
+        }
+    }
+    for (let index of foundIndexes) {
+        wordDivs[index].innerText = input;
+    }
+    if(checkWin()) {
+        alert("YOU WON!!!!!!!")
+    }
+}
+}
+
+function checkWin() {
+    for (let div of wordDivs) {
+      if (div.innerText === "_") {
+        return false; 
+      }
+    }
+    return true;
+    
+  }
+
+
+guessButtonEl.addEventListener("click", handleGuess)
+guessInputEl
+
+
+
 //  Initiate another array of same length as word, but each character is an “_”.
 
 //  Initialize variable “lives” = 6
@@ -72,9 +137,5 @@ const Randomly_Generated_words = ("dog", "kenjamin", "laptop", "JavaScriptIsAPai
 //  If true, print “You lose” & end loop
 
 //  End while loop
-
-
-
-
 
 
