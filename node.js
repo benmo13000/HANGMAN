@@ -1,11 +1,11 @@
    //define constants
 
-     const wordList = ["googoogaga"];
-     const maxAttempts = 6;
+     const wordList = ["googoogaga", "ooo"];
+     const maxLives = 6;
      let currentWord = "";
      let guessedWord = "";
      let guessedLetters = [];
-     let attemptsLeft = maxAttempts;
+    //  let livesLeft = maxLives;
      let wordDivs 
      let lives = 6;
     //  , "kenjamin", "laptop", "JavaScriptIsAPainInTheAss"
@@ -18,7 +18,7 @@
 // const scoreDisplay = document.getElementById(Score_Display);
 
 // Lives display element
-const livesDisplayEl = document.getElementById("lives_display");
+const livesDisplayEl = document.getElementById("lives-display");
 
 //words display
 const wordDisplayEl = document.getElementById("word-display");
@@ -29,63 +29,83 @@ const guessInputEl = document.getElementById("guess-input");
 //guess button
 const guessButtonEl = document.getElementById("guess-button");
 
-function updateLivesDisplay(){
-    lives--;
-    livesDisplayEl.textContent = `Lives: ${lives}`;
-    if(lives === 0){
-        handleLoss();
-    }
-}
+const titleEl = document.getElementById("title");
 
-console.log(wordDisplayEl)
+function updateLivesDisplay() {
+    if (lives > 0) {
+        console.log(lives)
+      lives--;
+      livesDisplayEl.textContent = `Lives: ${lives}`;
+      if (lives === 0) {
+        handleLoss();
+      }
+    }
+  }
+
+// console.log(wordDisplayEl)
+
 function initializeGame() {
-renderWord()
-}
-function resetGame(){
+    currentWord = wordList[Math.floor(Math.random() * wordList.length)];
+    titleEl.innerText = "Hangman!!"
     guessedLetters = [];
-    attemptsLeft = maxAttempts;
+    lives = maxLives;
+    livesDisplayEl.textContent = `Lives: ${lives}`;
     wordDisplayEl.innerHTML = "";
     renderWord();
     guessInputEl.value = "";
 
 }
 const restartButtonEl = document.getElementById("restart-button");
-restartButtonEl.addEventListener("click", resetGame);
+restartButtonEl.addEventListener("click", initializeGame);
 
 initializeGame()
+    
+
 
 
 
 function renderWord(){
-    currentWord = wordList[0]
+    // currentWord = wordList[0]
     for (let i = 0; i< currentWord.length; i++){
-        console.log(i)
         const divEl = document.createElement("div");
-        divEl.innerText = "_"
+        divEl.innerText = "_ "
         divEl.classList.add("letter")
         wordDisplayEl.appendChild(divEl);
 }
     wordDivs = document.querySelectorAll(".letter")
 }
 
-function handleGuess(){
-  let input = guessInputEl.value
-  let foundIndexes = []
-  if(currentWord.indexOf(input) !== -1){
-  }else{
-    updateLivesDisplay();
-    for (let i=0; i < currentWord.length; i++){
-        if (currentWord[i] === input) {
+function handleGuess() {
+    let input = guessInputEl.value;
+    let foundIndexes = [];
+  
+    // Check if the guessed letter is not in guessedLetters
+    if (guessedLetters.indexOf(input) === -1) {
+      guessedLetters.push(input); // Add the guessed letter to guessedLetters
+  
+      if (currentWord.indexOf(input) === -1) {
+        updateLivesDisplay();
+      } else {
+        for (let i = 0; i < currentWord.length; i++) {
+          if (currentWord[i] === input) {
             foundIndexes.push(i);
+          }
         }
+        for (let index of foundIndexes) {
+          wordDivs[index].innerText = input;
+        }
+        if (checkWin()) {
+          titleEl.innerText = "YOU WON!!!!!!!";
+        }
+      }
     }
-    for (let index of foundIndexes) {
-        wordDivs[index].innerText = input;
-    }
-    if(checkWin()) {
-        alert("YOU WON!!!!!!!")
-    }
-}
+  
+    // Clear the guess input field
+    guessInputEl.value = "";
+  }
+  
+function handleLoss(){
+    titleEl.innerText = "You Lose! The correct word was: " + currentWord;
 }
 
 function checkWin() {

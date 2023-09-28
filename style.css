@@ -1,0 +1,21 @@
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+#word-display {
+    font-size: 24px;
+    margin-top: 20px;
+}
+#guess-input {
+    font-size: 18px;
+    padding: 5px;
+    margin-top: 10px;
+}
+#message {
+    font-size: 18px;
+    margin-top: 10px;
+}
+.letter{
+    display: inline;
+}
