@@ -33,14 +33,7 @@ If you'd like to contribute to this project, please follow these steps:
 4. Push to the branch (`git push origin feature-name`).
 5. Open a Pull Request.
 
-## favorite code
-```js
-function niceWords(){
-    console.log("fuck you")
-}
-niceWords()
-
-```
-## challenge
-
-## takeaway
+## Next Steps
+- I'd like to add the actual hangman to the game so I can truly name it hangman
+- I want to make it fully compatable with phones and different sized screens
+- I'd like to fix the input, so when I put a capital letter(that's correct) it won't count as an incorrect guess
