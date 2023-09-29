@@ -32,3 +32,15 @@ If you'd like to contribute to this project, please follow these steps:
 3. Commit your changes (`git commit -m 'Add feature'`).
 4. Push to the branch (`git push origin feature-name`).
 5. Open a Pull Request.
+
+## favorite code
+```js
+function niceWords(){
+    console.log("fuck you")
+}
+niceWords()
+
+```
+## challenge
+
+## takeaway

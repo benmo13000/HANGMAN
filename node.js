@@ -1,19 +1,27 @@
+//constants
 const wordList = ["gonczar", "pain", "kenjamin", "javascriptisapainintheass"];
 const maxLives = 6;
+// state variables
+let wordDivs = "";
 let currentWord = "";
-let guessedWord = "";
 let guessedLetters = [];
-let wordDivs
-let lives = 6;
+let lives 
+
+
+//cached element
+const restartButtonEl = document.getElementById("restart-button");
 const livesDisplayEl = document.getElementById("lives-display");
 const wordDisplayEl = document.getElementById("word-display");
 const guessInputEl = document.getElementById("guess-input");
 const guessButtonEl = document.getElementById("guess-button");
 const titleEl = document.getElementById("title");
+//event listeners
+guessButtonEl.addEventListener("click", handleGuess);
+restartButtonEl.addEventListener("click", initializeGame);
 
+//functions
 function updateLivesDisplay() {
 	if (lives > 0) {
-		console.log(lives)
 		lives--;
 		livesDisplayEl.textContent = `Lives: ${lives}`;
 		if (lives === 0) {
@@ -32,10 +40,6 @@ function initializeGame() {
 	renderWord();
 	guessInputEl.value = "";
 }
-const restartButtonEl = document.getElementById("restart-button");
-restartButtonEl.addEventListener("click", initializeGame);
-initializeGame()
-
 function renderWord() {
 	for (let i = 0; i < currentWord.length; i++) {
 		const divEl = document.createElement("div");
@@ -43,7 +47,7 @@ function renderWord() {
 		divEl.classList.add("letter")
 		wordDisplayEl.appendChild(divEl);
 	}
-	wordDivs = document.querySelectorAll(".letter")
+    wordDivs = document.querySelectorAll(".letter")
 }
 
 function handleGuess() {
@@ -81,7 +85,5 @@ function checkWin() {
       }
     }
     return true;
-  }
-  
-guessButtonEl.addEventListener("click", handleGuess)
-guessInputEl
+}
+initializeGame()
